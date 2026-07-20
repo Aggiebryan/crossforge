@@ -18,6 +18,9 @@ import {
   Moon,
   ShieldAlert,
   LogOut,
+  Plus,
+  Zap,
+  UserPlus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CommandPalette } from "./CommandPalette";
@@ -80,6 +83,28 @@ export function AppShell({
                 ? orgName
                 : "The system is stronger than the operator's emotion on a bad day."}
             </p>
+          </div>
+          <div className="border-b border-border p-2 space-y-1">
+            <Link
+              href="/pipeline/new"
+              className="flex items-center gap-2 rounded-md bg-accent px-2.5 py-1.5 text-[13px] font-medium text-accent-fg hover:opacity-90"
+            >
+              <Plus className="h-4 w-4" /> New lead
+            </Link>
+            <div className="flex gap-1">
+              <Link
+                href="/pipeline/new?mode=quick"
+                className="flex flex-1 items-center justify-center gap-1 rounded-md border border-border px-2 py-1.5 text-[11px] text-fg-muted hover:bg-bg-elev-2"
+              >
+                <Zap className="h-3 w-3" /> Quick
+              </Link>
+              <Link
+                href="/buyers/new"
+                className="flex flex-1 items-center justify-center gap-1 rounded-md border border-border px-2 py-1.5 text-[11px] text-fg-muted hover:bg-bg-elev-2"
+              >
+                <UserPlus className="h-3 w-3" /> Buyer
+              </Link>
+            </div>
           </div>
           <nav className="flex-1 overflow-y-auto py-2">
             {NAV.map((item) => {
