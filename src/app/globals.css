@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+ * CrossForge CRM — operator theme.
+ * Dark mode is the primary, first-class theme. Semantic color is reserved for
+ * meaning only: red = walk-away / expired / at-risk, yellow = curable /
+ * approaching, green = clear. Never decorative.
+ */
+
+:root[data-theme="dark"],
+:root {
+  --bg: #0b0e14;
+  --bg-elev: #111722;
+  --bg-elev-2: #161d2b;
+  --border: #223049;
+  --border-strong: #33456a;
+  --fg: #e6ecf5;
+  --fg-muted: #93a1bd;
+  --fg-faint: #5f6f8f;
+  --accent: #3b82f6;
+  --accent-fg: #ffffff;
+  --danger: #ef4444;
+  --danger-bg: #2a1416;
+  --warn: #f59e0b;
+  --warn-bg: #2a2110;
+  --ok: #22c55e;
+  --ok-bg: #10241a;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f6fb;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #eef2f9;
+  --border: #d5deed;
+  --border-strong: #b6c4dd;
+  --fg: #10192b;
+  --fg-muted: #4a5a76;
+  --fg-faint: #7c8aa5;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --danger: #dc2626;
+  --danger-bg: #fdeaea;
+  --warn: #b45309;
+  --warn-bg: #fdf3e2;
+  --ok: #16a34a;
+  --ok-bg: #e8f7ee;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-bg-elev-2: var(--bg-elev-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-ok: var(--ok);
+  --color-ok-bg: var(--ok-bg);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dense operator scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 6px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
