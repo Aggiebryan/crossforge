@@ -17,11 +17,13 @@ import {
   Sun,
   Moon,
   ShieldAlert,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CommandPalette } from "./CommandPalette";
 import { RoleContext, type Role } from "./RoleContext";
 import { ROLE_LABELS, ROLES } from "@/domain/constants";
+import { signOutAction } from "@/app/auth/actions";
 
 const NAV = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -35,7 +37,15 @@ const NAV = [
   { href: "/kpi", label: "KPIs", icon: BarChart3 },
 ];
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({
+  children,
+  orgName,
+  email,
+}: {
+  children: React.ReactNode;
+  orgName?: string | null;
+  email?: string | null;
+}) {
   const pathname = usePathname();
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -63,10 +73,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="px-4 py-4 border-b border-border">
             <div className="flex items-center gap-2">
               <ShieldAlert className="h-5 w-5 text-accent" />
-              <span className="font-semibold tracking-tight">CrossForge</span>
+              <span className="font-semibold tracking-tight">Crossforge Capital</span>
             </div>
             <p className="mt-1 text-[11px] text-fg-faint leading-tight">
-              The system is stronger than the operator&apos;s emotion on a bad day.
+              {orgName
+                ? orgName
+                : "The system is stronger than the operator's emotion on a bad day."}
             </p>
           </div>
           <nav className="flex-1 overflow-y-auto py-2">
@@ -120,6 +132,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
               </button>
             </div>
+            {email && (
+              <form action={signOutAction} className="flex items-center justify-between gap-2 pt-1">
+                <span className="truncate text-[10px] text-fg-faint" title={email}>
+                  {email}
+                </span>
+                <button
+                  type="submit"
+                  className="flex items-center gap-1 rounded-md border border-border px-2 py-1 text-[10px] text-fg-muted hover:bg-bg-elev-2"
+                >
+                  <LogOut className="h-3 w-3" /> Sign out
+                </button>
+              </form>
+            )}
           </div>
         </aside>
 
